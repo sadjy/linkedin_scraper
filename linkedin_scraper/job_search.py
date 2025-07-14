@@ -103,7 +103,7 @@ class JobSearch(Scraper):
     def search(self, search_term: str) -> list[Job]:
         url = (
             os.path.join(self.base_url, "search")
-            + f"?keywords={urllib.parse.quote(search_term)}&refresh=true"
+            + f"?f_WT=2&geoId=92000000&keywords={urllib.parse.quote(search_term)}&refresh=true"
         )
         self.driver.get(url)
         self.scroll_to_bottom()
