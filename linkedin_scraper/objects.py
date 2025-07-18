@@ -91,6 +91,7 @@ class Scraper:
         )
 
     def is_signed_in(self):
+        self.driver.get(self.linkedin_url)
         try:
             WebDriverWait(self.driver, self.WAIT_FOR_ELEMENT_TIMEOUT).until(
                 EC.presence_of_element_located(
