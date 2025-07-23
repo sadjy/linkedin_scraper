@@ -91,7 +91,11 @@ class Scraper:
         )
 
     def is_signed_in(self):
-        self.driver.get(self.linkedin_url)
+        if hasattr(self, "linkedin_url"):
+            print("DEBUG: Getting URL:", self.linkedin_url)
+            self.driver.get(self.linkedin_url)
+        else:
+            self.driver.get("https://linkedin.com/feed")
         try:
             WebDriverWait(self.driver, self.WAIT_FOR_ELEMENT_TIMEOUT).until(
                 EC.presence_of_element_located(
